@@ -1,0 +1,40 @@
+{
+  "name": "se-challenge-payroll",
+  "version": "1.0.0",
+  "description": "Applicants for the Full-stack Developer role at Wave must complete the following challenge, and submit a solution prior to the onsite interview.",
+  "main": "app.js",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.30.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "jest": "^27.0.6",
+    "nodemon": "^2.0.9",
+    "prettier": "^2.3.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sidhlee/se-challenge-payroll.git"
+  },
+  "author": "Sid Lee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sidhlee/se-challenge-payroll/issues"
+  },
+  "homepage": "https://github.com/sidhlee/se-challenge-payroll#readme"
+}
