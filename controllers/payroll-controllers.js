@@ -1,3 +1,7 @@
+const { parseFile } = require('fast-csv');
+const fs = require('fs');
+const moment = require('moment');
+
 const getPayrollReport = (req, res, next) => {
   const payrollReport = {
     employeeReports: [
@@ -27,14 +31,44 @@ const getPayrollReport = (req, res, next) => {
       },
     ],
   };
-  return res.status(200).json({ payrollReport });
+  return res.json({ payrollReport });
 };
 
 const createPayrollReport = (req, res, next) => {
   console.log('post');
-  return res
-    .status(200)
-    .json({ message: 'Time report successfully uploaded!' });
+
+  const workingHours = [];
+  // treat first row as header and remove
+  parseFile(req.file.path, { headers: true })
+    .on('error', (err) => {
+      console.error(err);
+      return res.status(500);
+    })
+    .on('data', (row) => {
+      const {
+        date,
+        'hours worked': hoursWorked,
+        'employee id': employeeId,
+        'job group': jobGroup,
+      } = row;
+
+      const formattedDate = moment(date, 'DD/MM/YYYY').format('YYYY-MM-DD');
+
+      const workingHour = {
+        date: formattedDate,
+        hoursWorked,
+        employeeId,
+        jobGroup,
+      };
+
+      workingHours.push(workingHour);
+    })
+    .on('end', (rowCount) => {
+      console.log(`Parsed ${rowCount} rows`);
+      console.log(workingHours);
+      fs.unlinkSync(req.file.path);
+      return res.json(workingHours);
+    });
 };
 
 module.exports = {

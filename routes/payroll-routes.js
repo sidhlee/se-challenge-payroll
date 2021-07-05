@@ -1,4 +1,5 @@
 const express = require('express');
+const fileUpload = require('../middlewares/file-upload');
 const {
   getPayrollReport,
   createPayrollReport,
@@ -8,6 +9,6 @@ const router = express.Router();
 
 router.get('/', getPayrollReport);
 
-router.post('/', createPayrollReport);
+router.post('/', fileUpload.single('file'), createPayrollReport);
 
 module.exports = router;
