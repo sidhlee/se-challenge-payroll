@@ -1,14 +1,11 @@
 const express = require('express');
 const fileUpload = require('../middlewares/file-upload');
-const {
-  getPayrollReport,
-  createPayrollReport,
-} = require('../controllers/payroll-controllers');
+const { createReport, getReport } = require('../controllers/payroll');
 
 const router = express.Router();
 
-router.get('/', getPayrollReport);
+router.get('/', getReport);
 
-router.post('/', fileUpload.single('file'), createPayrollReport);
+router.post('/', fileUpload.single('file'), createReport);
 
 module.exports = router;

@@ -1,7 +1,7 @@
 const {
   getEmployeeReports,
   getPayPeriod,
-} = require('../controllers/payroll-controllers');
+} = require('../controllers/payroll/getReport');
 
 describe('getEmployeeReports', () => {
   it('should return correct reports', () => {
