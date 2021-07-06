@@ -4,6 +4,7 @@
   "description": "Applicants for the Full-stack Developer role at Wave must complete the following challenge, and submit a solution prior to the onsite interview.",
   "main": "app.js",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "fast-csv": "^4.3.6",
