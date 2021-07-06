@@ -25,3 +25,29 @@ const workingHourSchema = mongoose.Schema({
 });
 
 module.exports = mongoose.model('WorkingHour', workingHourSchema);
+const expected = [
+  {
+    employeeId: '1',
+    payPeriod: {
+      startDate: '2020-01-01',
+      endDate: '2020-01-15',
+    },
+    amountPaid: '$300.00',
+  },
+  {
+    employeeId: '1',
+    payPeriod: {
+      startDate: '2020-01-16',
+      endDate: '2020-01-31',
+    },
+    amountPaid: '$80.00',
+  },
+  {
+    employeeId: '2',
+    payPeriod: {
+      startDate: '2020-01-16',
+      endDate: '2020-01-31',
+    },
+    amountPaid: '$90.00',
+  },
+];

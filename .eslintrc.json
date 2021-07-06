@@ -3,7 +3,8 @@
     "browser": true,
     "commonjs": true,
     "es2021": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "extends": ["airbnb-base", "prettier", "eslint:recommended"],
   "plugins": ["prettier"],
@@ -19,6 +20,7 @@
     "object-shorthand": "off",
     "class-methods-use-this": "off",
     "arrow-body-style": "off",
-    "no-use-before-define": "off"
+    "no-use-before-define": "off",
+    "no-plusplus": "off"
   }
 }
