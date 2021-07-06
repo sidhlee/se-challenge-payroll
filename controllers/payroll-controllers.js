@@ -107,16 +107,16 @@ const createPayrollReport = async (req, res, next) => {
     const existingReport = await TimeReport.find({ id: reportId });
 
     if (existingReport.length > 0) {
-      fs.unlinkSync(req.file.path);
-      return res.status(403).json({
-        message: `Uploading exiting report is not allowed. reportId: ${reportId}`,
-      });
+      return next(
+        new HttpError(
+          `Uploading exiting report is not allowed. reportId: ${reportId}`,
+          403
+        )
+      );
     }
   } catch (err) {
-    fs.unlinkSync(req.file.path);
-    throw new HttpError(
-      'An error occurred while checking for existing report',
-      500
+    return next(
+      new HttpError('An error occurred while checking for existing report', 500)
     );
   }
 
@@ -126,7 +126,7 @@ const createPayrollReport = async (req, res, next) => {
   return parseFile(req.file.path, { headers: true })
     .on('error', (err) => {
       console.error(err);
-      return res.status(500);
+      return next(new Error('An error occurred while parsing CSV file.'));
     })
     .on('data', (row) => {
       const {
@@ -161,7 +161,6 @@ const createPayrollReport = async (req, res, next) => {
 
         return res.status(200).json({ success: true, rowCount, workingHours });
       } catch (err) {
-        console.log(err);
         return next(new HttpError('Could not create payroll report', 500));
       }
     });
