@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const workingHourSchema = mongoose.Schema({
+  reportId: {
+    type: Number,
+    required: true,
+  },
   date: {
     type: String,
     required: true,

@@ -18,6 +18,7 @@
     "no-process-exit": "off",
     "object-shorthand": "off",
     "class-methods-use-this": "off",
-    "arrow-body-style": "off"
+    "arrow-body-style": "off",
+    "no-use-before-define": "off"
   }
 }
