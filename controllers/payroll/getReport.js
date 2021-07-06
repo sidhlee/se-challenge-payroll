@@ -89,4 +89,5 @@ module.exports = {
   getReport,
   getEmployeeReports,
   getPayPeriod,
+  getPeriodicReport,
 };
